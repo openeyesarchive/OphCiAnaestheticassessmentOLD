@@ -146,9 +146,13 @@ class Element_OphCiAnaestheticassessment_History extends BaseEventTypeElement
 				throw new Exception("Patient not found: ".@$_GET['patient_id']);
 			}
 
-			foreach ($patient->secondarydiagnoses as $i => $diagnosis) {
-				if ($i) $this->medical_history .= ', ';
-				$this->medical_history .= $diagnosis->disorder->term;
+			$i=0;
+			foreach ($patient->secondarydiagnoses as $diagnosis) {
+				if (!$diagnosis->disorder->specialty_id) {
+					if ($i) $this->medical_history .= ', ';
+					$this->medical_history .= $diagnosis->disorder->term;
+					$i++;
+				}
 			}
 
 			foreach ($patient->allergies as $i => $allergy) {
