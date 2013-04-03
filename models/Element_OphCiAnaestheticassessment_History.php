@@ -160,7 +160,7 @@ class Element_OphCiAnaestheticassessment_History extends BaseEventTypeElement
 				$this->allergies .= $allergy->name;
 			}
 
-			foreach ($patient->previousOperations as $operation) {
+			foreach ($patient->previousOperations as $i => $operation) {
 				if ($i) $this->previous_surgical_procedures .= ', ';
 				if ($operation->side) {
 					$this->previous_surgical_procedures .= $operation->side->adjective.' ';
