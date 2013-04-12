@@ -25,6 +25,14 @@ $(document).ready(function() {
 		e.preventDefault();
 	});
 
+	handleButton($('button.ed_clear'),function(e) {
+		e.preventDefault();
+
+		ed_drawing_edit_359.deleteAllDoodles();
+		ed_drawing_edit_359.deselectDoodles();
+		ed_drawing_edit_359.drawAllDoodles();
+	});
+
 	$('select.populate_textarea').unbind('change').change(function() {
 		if ($(this).val() != '') {
 			var cLass = $(this).parent().parent().parent().attr('class').match(/Element.*/);
