@@ -57,10 +57,6 @@
 					<td><span class="big"><?php echo CHtml::encode($element->blood_pressure1)?>/<?php echo CHtml::encode($element->blood_pressure2)?></span></td>
 				</tr>
 				<tr>
-					<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('rbs'))?></td>
-					<td><span class="big"><?php echo CHtml::encode($element->rbs)?></span></td>
-				</tr>
-				<tr>
 					<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('sao2'))?></td>
 					<td><span class="big"><?php echo CHtml::encode($element->sao2)?></span></td>
 				</tr>
@@ -77,8 +73,16 @@
 					<td><span class="big"><?php echo CHtml::encode($element->heart)?></span></td>
 				</tr>
 				<tr>
-					<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('investigations'))?></td>
-					<td><span class="big"><?php echo CHtml::encode($element->investigations)?></span></td>
+					<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('airway_class'))?></td>
+					<td><span class="big"><?php echo CHtml::encode($element->airway_class)?></span></td>
+				</tr>
+				<tr>
+					<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('loose_teeth'))?></td>
+					<td><span class="big"><?php echo CHtml::encode($element->loose_teeth)?></span></td>
+				</tr>
+				<tr>
+					<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('abdominal_palpation'))?></td>
+					<td><span class="big"><?php echo CHtml::encode($element->abdominal_palpation)?></span></td>
 				</tr>
 			</tbody>
 		</table>

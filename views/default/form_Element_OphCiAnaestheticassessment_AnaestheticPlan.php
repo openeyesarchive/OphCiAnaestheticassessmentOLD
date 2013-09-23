@@ -25,22 +25,6 @@
 	data-element-display-order="<?php echo $element->elementType->display_order?>">
 	<h4 class="elementTypeName"><?php echo $element->elementType->name; ?></h4>
 
-	<?php echo $form->textArea($element, 'medical_history', array('rows' => 4, 'cols' => 80))?>
-	<?php echo $form->textArea($element, 'allergies', array('rows' => 4, 'cols' => 80))?>
-	<div id="div_<?php echo $element->elementType->class_name?>_iodine" class="eventDetail">
-		<div class="label"></div>
-		<div class="datacol1">
-			<input type="hidden" value="0" name="<?php echo $element->elementType->class_name?>[iodine]" id="<?php echo $element->elementType->class_name?>_iodine">
-			<input type="checkbox" value="1" name="<?php echo $element->elementType->class_name?>[iodine]" id="<?php echo $element->elementType->class_name?>_iodine">
-			<?php echo $element->getAttributeLabel('iodine')?>
-			&nbsp;&nbsp;&nbsp;
-			<input type="hidden" value="0" name="<?php echo $element->elementType->class_name?>[latex]" id="<?php echo $element->elementType->class_name?>_latex">
-			<input type="checkbox" value="1" name="<?php echo $element->elementType->class_name?>[latex]" id="<?php echo $element->elementType->class_name?>_latex">
-			<?php echo $element->getAttributeLabel('latex')?>
-		</div>
-	</div>
-	<?php echo $form->textArea($element, 'previous_surgical_procedures', array('rows' => 4, 'cols' => 80))?>
-	<?php echo $form->checkBox($element, 'previous_anaesthesia_problems', array('text-align' => 'right'))?>
-	<?php echo $form->textField($element, 'anaesthesia_problems', array('hide' => !$element->previous_anaesthesia_problems))?>
-	<?php echo $form->textArea($element, 'system_review', array('rows' => 4, 'cols' => 80))?>
+	<?php echo $form->dropDownList($element, 'asa_grade_id', CHtml::listData(OphCiAnaestheticassessment_AnaestheticPlan_ASA_Grade::model()->findAll(array('order'=>'display_order')),'id','name'))?>
+	<?php echo $form->textArea($element, 'plan', array('rows'=>4,'cols'=>80))?>
 </div>

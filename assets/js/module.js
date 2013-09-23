@@ -60,6 +60,22 @@ $(document).ready(function() {
 		$('#Element_OphCiAnaestheticassessment_Examination_lung').val(ed_drawing_edit_359.report().replace(/, +$/, ''));
 		e.preventDefault();
 	});
+
+	$('input[type="checkbox"][name="Element_OphCiAnaestheticassessment_AnaestheticHistory[smoking]"]').click(function(e) {
+		if ($(this).is(':checked')) {
+			$('div.smoking_how_much').css('display','inline-block');
+		} else {
+			$('div.smoking_how_much').css('display','none');
+		}
+	});
+
+	$('input[type="checkbox"][name="Element_OphCiAnaestheticassessment_AnaestheticHistory[drinking]"]').click(function(e) {
+		if ($(this).is(':checked')) {
+			$('div.drinking_how_much').css('display','inline-block');
+		} else {
+			$('div.drinking_how_much').css('display','none');
+		}
+	});
 });
 
 function ucfirst(str) { str += ''; var f = str.charAt(0).toUpperCase(); return f + str.substr(1); }

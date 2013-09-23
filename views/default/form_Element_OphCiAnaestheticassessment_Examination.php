@@ -57,13 +57,14 @@
 					</div>
 				</div>
 
-				<?php echo $form->textField($element, 'rbs', array('size' => '5'))?>
 				<?php echo $form->textField($element, 'sao2', array('size' => '5'))?>
 				<?php echo $form->textField($element, 'temp', array('size' => '5'))?>
 				<?php echo $form->textField($element, 'pulse', array('size' => '5'))?>
 				<?php echo $form->textArea($element, 'lung', array('rows' => 3, 'cols' => 55))?>
 				<?php echo $form->textField($element, 'heart', array('size' => 50))?>
-				<?php echo $form->textField($element, 'investigations', array('size' => 50))?>
+				<?php echo $form->textField($element, 'airway_class', array('size' => 50))?>
+				<?php echo $form->textField($element, 'loose_teeth', array('size' => 50))?>
+				<?php echo $form->textField($element, 'abdominal_palpation', array('size' => 50))?>
 			</div>
 		</div>
 	</div>

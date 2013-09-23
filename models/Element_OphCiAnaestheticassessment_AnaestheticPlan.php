@@ -18,19 +18,13 @@
  */
 
 /**
- * This is the model class for table "et_ophcianaestheticassessmen_history".
+ * This is the model class for table "et_ophcianaestheticassessmen_anaestheticplan".
  *
  * The followings are the available columns in table:
  * @property string $id
  * @property integer $event_id
- * @property string $medical_history
- * @property string $allergies
- * @property integer $iodine
- * @property integer $latex
- * @property string $previous_surgical_procedures
- * @property integer $previous_anaesthesia_problems
- * @property string $anaesthesia_problems
- * @property string $system_review
+ * @property integer $asa_grade_id
+ * @property text $plan
  *
  * The followings are the available model relations:
  *
@@ -41,10 +35,8 @@
  * @property User $usermodified
  */
 
-class Element_OphCiAnaestheticassessment_History extends BaseEventTypeElement
+class Element_OphCiAnaestheticassessment_AnaestheticPlan extends BaseEventTypeElement
 {
-	public $service;
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return the static model class
@@ -59,7 +51,7 @@ class Element_OphCiAnaestheticassessment_History extends BaseEventTypeElement
 	 */
 	public function tableName()
 	{
-		return 'et_ophcianaestheticassessmen_history';
+		return 'et_ophcianaestheticassessment_anaestheticplan';
 	}
 
 	/**
@@ -70,11 +62,11 @@ class Element_OphCiAnaestheticassessment_History extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, medical_history, allergies, iodine, latex, previous_surgical_procedures, previous_anaesthesia_problems, anaesthesia_problems, system_review, ', 'safe'),
-			array('previous_anaesthesia_problems, ', 'required'),
+			array('event_id, asa_grade_id, plan', 'safe'),
+			array('asa_grade_id, plan', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, medical_history, allergies, iodine, latex, previous_surgical_procedures, previous_anaesthesia_problems, anaesthesia_problems, system_review, ', 'safe', 'on' => 'search'),
+			array('id, event_id, asa_grade_id, plan', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -91,6 +83,9 @@ class Element_OphCiAnaestheticassessment_History extends BaseEventTypeElement
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
+			'asa_grade' => array(self::BELONGS_TO, 'OphCiAnaestheticassessment_AnaestheticPlan_ASA_Grade', 'asa_grade_id'),
+			'drinking_how_much' => array(self::BELONGS_TO, 'OphCiAnaestheticassessment_AnaestheticPlan_DrinkingHowMuch', 'drinking_how_much_id'),
+			'smoking_how_much' => array(self::BELONGS_TO, 'OphCiAnaestheticassessment_AnaestheticPlan_SmokingHowMuch', 'smoking_how_much_id'),
 		);
 	}
 
@@ -102,14 +97,7 @@ class Element_OphCiAnaestheticassessment_History extends BaseEventTypeElement
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-			'medical_history' => 'Medical history',
-			'allergies' => 'Allergies',
-			'iodine' => 'Iodine',
-			'latex' => 'Latex',
-			'previous_surgical_procedures' => 'Previous surgical procedures',
-			'previous_anaesthesia_problems' => 'Previous anaesthesia problems',
-			'anaesthesia_problems' => 'Anaesthesia problems',
-			'system_review' => 'System review',
+			'asa_grade_id' => 'ASA grade',
 		);
 	}
 
@@ -126,48 +114,10 @@ class Element_OphCiAnaestheticassessment_History extends BaseEventTypeElement
 
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('event_id', $this->event_id, true);
-		$criteria->compare('medical_history', $this->medical_history);
-		$criteria->compare('allergies', $this->allergies);
-		$criteria->compare('iodine', $this->iodine);
-		$criteria->compare('latex', $this->latex);
-		$criteria->compare('previous_surgical_procedures', $this->previous_surgical_procedures);
-		$criteria->compare('previous_anaesthesia_problems', $this->previous_anaesthesia_problems);
-		$criteria->compare('anaesthesia_problems', $this->anaesthesia_problems);
-		$criteria->compare('system_review', $this->system_review);
 		
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria' => $criteria,
 		));
-	}
-
-	public function setDefaultOptions() {
-		if (Yii::app()->getController()->getAction()->id == 'create') {
-			if (!$patient = Patient::model()->findByPk(@$_GET['patient_id'])) {
-				throw new Exception("Patient not found: ".@$_GET['patient_id']);
-			}
-
-			$i=0;
-			foreach ($patient->secondarydiagnoses as $diagnosis) {
-				if (!$diagnosis->disorder->specialty_id) {
-					if ($i) $this->medical_history .= ', ';
-					$this->medical_history .= $diagnosis->disorder->term;
-					$i++;
-				}
-			}
-
-			foreach ($patient->allergies as $i => $allergy) {
-				if ($i) $this->allergies .= ', ';
-				$this->allergies .= $allergy->name;
-			}
-
-			foreach ($patient->previousOperations as $i => $operation) {
-				if ($i) $this->previous_surgical_procedures .= ', ';
-				if ($operation->side) {
-					$this->previous_surgical_procedures .= $operation->side->adjective.' ';
-				}
-				$this->previous_surgical_procedures .= $operation->operation;
-			}
-		}
 	}
 }
 ?>

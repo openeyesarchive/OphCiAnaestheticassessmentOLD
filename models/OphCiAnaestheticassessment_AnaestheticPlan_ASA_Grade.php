@@ -1,5 +1,4 @@
-<?php
-/**
+<?php /**
  * OpenEyes
  *
  * (C) Moorfields Eye Hospital NHS Foundation Trust, 2008-2011
@@ -18,22 +17,11 @@
  */
 
 /**
- * This is the model class for table "et_ophcianaestheticassessmen_examination".
+ * This is the model class for table "ophcianaestheticassessment_anaestheticplan_asa_grade".
  *
  * The followings are the available columns in table:
  * @property string $id
- * @property integer $event_id
- * @property string $blood_pressure1
- * @property string $blood_pressure2
- * @property string $sao2
- * @property string $temp
- * @property string $pulse
- * @property string $eyedraw
- * @property string $lung
- * @property string $heart
- * @property string $airway_class
- * @property string $loose_teeth
- * @property string $abdominal_palpation
+ * @property string $name
  *
  * The followings are the available model relations:
  *
@@ -44,10 +32,8 @@
  * @property User $usermodified
  */
 
-class Element_OphCiAnaestheticassessment_Examination extends BaseEventTypeElement
+class OphCiAnaestheticassessment_AnaestheticPlan_ASA_Grade extends BaseActiveRecord
 {
-	public $service;
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return the static model class
@@ -62,7 +48,7 @@ class Element_OphCiAnaestheticassessment_Examination extends BaseEventTypeElemen
 	 */
 	public function tableName()
 	{
-		return 'et_ophcianaestheticassessmen_examination';
+		return 'ophcianaestheticassessment_anaestheticplan_asa_grade';
 	}
 
 	/**
@@ -73,19 +59,14 @@ class Element_OphCiAnaestheticassessment_Examination extends BaseEventTypeElemen
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, blood_pressure1, blood_pressure2, sao2, temp, pulse, eyedraw, lung, heart, airway_class, loose_teeth, abdominal_palpation', 'safe'),
-			array('blood_pressure1, blood_pressure2, sao2, temp, pulse, eyedraw, lung, heart, airway_class, loose_teeth, abdominal_palpation', 'required'),
-			array('blood_pressure1', 'numerical', 'integerOnly' => true),
-			array('blood_pressure2', 'numerical', 'integerOnly' => true),
-			array('sao2', 'numerical', 'integerOnly' => true, 'min' => 0, 'max' => 150, 'message' => 'SaO2 must be between 0 - 150'),
-			array('temp', 'numerical', 'integerOnly' => false, 'min' => 30, 'max' => 45, 'numberPattern' => '/^[0-9]{2}(\.[0-9])?$/', 'message' => 'Temp must be between 30.0 - 45.0'),
-			array('pulse', 'numerical', 'integerOnly' => true, 'min' => 10, 'max' => 250, 'message' => 'Pulse must be between 10 - 250'),
+			array('name', 'safe'),
+			array('name', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, blood_pressure1, blood_pressure2, rbs, sao2, temp, pulse, eyedraw, lung, heart, investigations, ', 'safe', 'on' => 'search'),
+			array('id, name', 'safe', 'on' => 'search'),
 		);
 	}
-
+	
 	/**
 	 * @return array relational rules.
 	 */
@@ -109,20 +90,7 @@ class Element_OphCiAnaestheticassessment_Examination extends BaseEventTypeElemen
 	{
 		return array(
 			'id' => 'ID',
-			'event_id' => 'Event',
-			'blood_pressure1' => 'Blood pressure',
-			'blood_pressure2' => 'Blood pressure',
-			'rbs' => 'RBS',
-			'sao2' => 'SaO2',
-			'temp' => 'Temp',
-			'pulse' => 'Pulse',
-			'eyedraw' => 'Lung eyedraw',
-			'lung' => 'Lung',
-			'heart' => 'Heart',
-			'investigations' => 'Investigations',
-			'airway_class' => 'Airway class',
-			'loose_teeth' => 'Loose teeth',
-			'abdominal_palpation' => 'Abdominal palpation',
+			'name' => 'Name',
 		);
 	}
 
@@ -138,35 +106,11 @@ class Element_OphCiAnaestheticassessment_Examination extends BaseEventTypeElemen
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id, true);
-		$criteria->compare('event_id', $this->event_id, true);
-		$criteria->compare('blood_pressure1', $this->blood_pressure1);
-		$criteria->compare('blood_pressure2', $this->blood_pressure2);
-		$criteria->compare('rbs', $this->rbs);
-		$criteria->compare('sao2', $this->sao2);
-		$criteria->compare('temp', $this->temp);
-		$criteria->compare('pulse', $this->pulse);
-		$criteria->compare('eyedraw', $this->eyedraw);
-		$criteria->compare('lung', $this->lung);
-		$criteria->compare('heart', $this->heart);
-		$criteria->compare('investigations', $this->investigations);
-		
+		$criteria->compare('name', $this->name, true);
+
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria' => $criteria,
 		));
-	}
-
-	public function getBlood_pressure1() {
-		if (isset($_POST['Element_OphCiAnaestheticassessment_Examination']['blood_pressure1'])) {
-			return $_POST['Element_OphCiAnaestheticassessment_Examination']['blood_pressure1'];
-		}
-		return $this->blood_pressure1;
-	}
-
-	public function getBlood_pressure2() {
-		if (isset($_POST['Element_OphCiAnaestheticassessment_Examination']['blood_pressure2'])) {
-			return $_POST['Element_OphCiAnaestheticassessment_Examination']['blood_pressure2'];
-		}
-		return $this->blood_pressure2;
 	}
 }
 ?>
