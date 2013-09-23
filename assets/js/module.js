@@ -76,6 +76,10 @@ $(document).ready(function() {
 			$('div.drinking_how_much').css('display','none');
 		}
 	});
+
+	handleButton($('#et_print'),function(e) {
+		printIFrameUrl(OE_print_url,{});
+	});
 });
 
 function ucfirst(str) { str += ''; var f = str.charAt(0).toUpperCase(); return f + str.substr(1); }

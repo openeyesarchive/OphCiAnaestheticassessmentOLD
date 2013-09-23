@@ -18,24 +18,17 @@
  */
 ?>
 
-<?php
-	$this->breadcrumbs=array($this->module->id);
-	$this->header();
-?>
+<h4 class="elementTypeName"><?php echo $element->elementType->name?></h4>
 
-<h3 class="withEventIcon" style="background:transparent url(<?php echo $this->assetPath?>/img/medium.png) center left no-repeat;"><?php echo $this->event_type->name?></h3>
-
-<?php
-if ($this->canPrint()) {
-	$this->event_actions[] = EventAction::button('Print', 'print');
-}
-$this->renderPartial('//patient/event_actions');
-?>
-
-<div>
-	<?php $this->renderDefaultElements($this->action->id)?>
-	<?php $this->renderOptionalElements($this->action->id)?>
-	<div class="cleartall"></div>
+<div class="cols2 clearfix">
+	<div class="left">
+		<table class="subtleWhite normalText">
+			<tbody>
+				<tr>
+					<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('asa_grade_id'))?></td>
+					<td><span class="big"><?php echo $element->asa_grade ? $element->asa_grade->name : 'None'?></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
-
-<?php $this->footer()?>
