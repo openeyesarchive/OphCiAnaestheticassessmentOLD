@@ -118,6 +118,9 @@ class Element_OphCiAnaestheticassessment_AnaestheticHistory extends BaseEventTyp
 			'drinking_how_much_id' => 'How much?',
 			'gi' => 'GI',
 			'gu' => 'GU',
+			'pregnant_menstrual_period' => 'Pregnant/menstrual period',
+			'falls_mobility_risk' => 'Falls/mobility risk',
+			'anaesthesia_reviewed' => 'Anaesthesia reviewed',
 		);
 	}
 
