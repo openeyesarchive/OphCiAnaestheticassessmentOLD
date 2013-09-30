@@ -34,7 +34,7 @@
 				'mode'=>'edit',
 				'width'=>300,
 				'height'=>300,
-				'idSuffix'=> $element->elementType->id,
+				'idSuffix'=> 'heart',
 				'model'=>$element,
 				'attribute'=>'eyedraw',
 				'onReadyCommandArray'=>array(

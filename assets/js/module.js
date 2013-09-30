@@ -28,9 +28,11 @@ $(document).ready(function() {
 	handleButton($('button.ed_clear'),function(e) {
 		e.preventDefault();
 
-		ed_drawing_edit_359.deleteAllDoodles();
-		ed_drawing_edit_359.deselectDoodles();
-		ed_drawing_edit_359.drawAllDoodles();
+		ed_drawing_edit_heart.deleteAllDoodles();
+		ed_drawing_edit_heart.deselectDoodles();
+		ed_drawing_edit_heart.drawAllDoodles();
+
+		enableButtons();
 	});
 
 	$('select.populate_textarea').unbind('change').change(function() {
@@ -57,7 +59,7 @@ $(document).ready(function() {
 	});
 
 	$('#event_display').delegate('.ed_report', 'click', function(e) {
-		$('#Element_OphCiAnaestheticassessment_Examination_lung').val(ed_drawing_edit_359.report().replace(/, +$/, ''));
+		$('#Element_OphCiAnaestheticassessment_Examination_lung').val(ed_drawing_edit_heart.report().replace(/, +$/, ''));
 		e.preventDefault();
 	});
 
