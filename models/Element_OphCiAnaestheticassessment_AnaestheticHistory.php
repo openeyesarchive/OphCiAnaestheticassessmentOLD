@@ -111,9 +111,10 @@ class Element_OphCiAnaestheticassessment_AnaestheticHistory extends BaseEventTyp
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-			'previous_problems' => 'Previous problems',
-			'post_operative_nausea' => 'Post-operative nausea',
+			'previous_problems' => 'Previous anaesthesia problems (including family)',
+			'post_operative_nausea' => 'Post-operative nausea and vomiting',
 			'cns' => 'CNS',
+			'pain' => 'Pain (location & severity)',
 			'smoking_how_much_id' => 'How much?',
 			'drinking_how_much_id' => 'How much?',
 			'gi' => 'GI',
