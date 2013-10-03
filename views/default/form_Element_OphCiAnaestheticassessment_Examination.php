@@ -65,6 +65,8 @@
 				<?php echo $form->textField($element, 'airway_class', array('size' => 50))?>
 				<?php echo $form->textField($element, 'loose_teeth', array('size' => 50))?>
 				<?php echo $form->textField($element, 'abdominal_palpation', array('size' => 50))?>
+				<?php echo $form->textField($element, 'height', array('size' => 10))?>
+				<?php echo $form->textField($element, 'weight', array('size' => 10))?>
 			</div>
 		</div>
 	</div>

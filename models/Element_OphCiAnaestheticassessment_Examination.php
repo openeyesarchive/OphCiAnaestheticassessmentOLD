@@ -73,8 +73,8 @@ class Element_OphCiAnaestheticassessment_Examination extends BaseEventTypeElemen
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, blood_pressure1, blood_pressure2, sao2, temp, pulse, eyedraw, lung, heart, airway_class, loose_teeth, abdominal_palpation', 'safe'),
-			array('blood_pressure1, blood_pressure2, sao2, temp, pulse, eyedraw, lung, heart, airway_class, loose_teeth, abdominal_palpation', 'required'),
+			array('event_id, blood_pressure1, blood_pressure2, sao2, temp, pulse, eyedraw, lung, heart, airway_class, loose_teeth, abdominal_palpation, weight, height', 'safe'),
+			array('blood_pressure1, blood_pressure2, sao2, temp, pulse, eyedraw, lung, heart, airway_class, loose_teeth, abdominal_palpation, weight, height', 'required'),
 			array('blood_pressure1', 'numerical', 'integerOnly' => true),
 			array('blood_pressure2', 'numerical', 'integerOnly' => true),
 			array('sao2', 'numerical', 'integerOnly' => true, 'min' => 0, 'max' => 150, 'message' => 'SaO2 must be between 0 - 150'),

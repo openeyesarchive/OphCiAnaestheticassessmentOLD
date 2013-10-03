@@ -84,6 +84,14 @@
 					<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('abdominal_palpation'))?></td>
 					<td><span class="big"><?php echo CHtml::encode($element->abdominal_palpation)?></span></td>
 				</tr>
+				<tr>
+					<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('height'))?></td>
+					<td><span class="big"><?php echo CHtml::encode($element->height)?></span></td>
+				</tr>
+				<tr>
+					<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('weight'))?></td>
+					<td><span class="big"><?php echo CHtml::encode($element->weight)?></span></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
