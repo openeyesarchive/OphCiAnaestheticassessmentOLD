@@ -32,7 +32,7 @@
  * @property User $usermodified
  */
 
-class Element_OphCiAnaestheticassessment_Asa_AsaGrade extends BaseActiveRecord
+class Element_OphCiAnaestheticassessment_Asa_AsaGrade extends BaseActiveRecordVersioned
 {
 	/**
 	 * Returns the static model of the specified AR class.
