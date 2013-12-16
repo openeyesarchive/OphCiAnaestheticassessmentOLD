@@ -158,14 +158,10 @@ CREATE TABLE `ophcianaestheticassessmen_asa_asa_grade_version` (
 	public function down()
 	{
 		$this->dropColumn('ophcianaestheticassessmen_asa_asa_grade','deleted');
-		$this->dropColumn('ophcianaestheticassessmen_asa_asa_grade_version','deleted');
 
 		$this->dropColumn('et_ophcianaestheticassessmen_asa','deleted');
-		$this->dropColumn('et_ophcianaestheticassessmen_asa_version','deleted');
 		$this->dropColumn('et_ophcianaestheticassessmen_examination','deleted');
-		$this->dropColumn('et_ophcianaestheticassessmen_examination_version','deleted');
 		$this->dropColumn('et_ophcianaestheticassessmen_history','deleted');
-		$this->dropColumn('et_ophcianaestheticassessmen_history_version','deleted');
 
 		$this->dropTable('et_ophcianaestheticassessmen_asa_version');
 		$this->dropTable('et_ophcianaestheticassessmen_examination_version');
