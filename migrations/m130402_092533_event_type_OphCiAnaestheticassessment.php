@@ -40,14 +40,14 @@ class m130402_092533_event_type_OphCiAnaestheticassessment extends CDbMigration
 		$this->createTable('et_ophcianaestheticassessmen_history', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
 				'event_id' => 'int(10) unsigned NOT NULL',
-				'medical_history' => 'text COLLATE utf8_bin DEFAULT \'\'', // Medical history
-				'allergies' => 'text COLLATE utf8_bin DEFAULT \'\'', // Allergies
+				'medical_history' => 'text DEFAULT \'\'', // Medical history
+				'allergies' => 'text DEFAULT \'\'', // Allergies
 				'iodine' => 'tinyint(1) unsigned NOT NULL', // Iodine
 				'latex' => 'tinyint(1) unsigned NOT NULL', // Latex
-				'previous_surgical_procedures' => 'text COLLATE utf8_bin DEFAULT \'\'', // Previous surgical procedures
+				'previous_surgical_procedures' => 'text DEFAULT \'\'', // Previous surgical procedures
 				'previous_anaesthesia_problems' => 'tinyint(1) unsigned NOT NULL', // Previous anaesthesia problems
-				'anaesthesia_problems' => 'text COLLATE utf8_bin DEFAULT \'\'', // Anaesthesia problems
-				'system_review' => 'text COLLATE utf8_bin DEFAULT \'\'', // System review
+				'anaesthesia_problems' => 'text DEFAULT \'\'', // Anaesthesia problems
+				'system_review' => 'text DEFAULT \'\'', // System review
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
 				'created_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
@@ -59,7 +59,7 @@ class m130402_092533_event_type_OphCiAnaestheticassessment extends CDbMigration
 				'CONSTRAINT `et_ophcianaestheticassessmen_history_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcianaestheticassessmen_history_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcianaestheticassessmen_history_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 
 
@@ -67,16 +67,16 @@ class m130402_092533_event_type_OphCiAnaestheticassessment extends CDbMigration
 		$this->createTable('et_ophcianaestheticassessmen_examination', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
 				'event_id' => 'int(10) unsigned NOT NULL',
-				'blood_pressure1' => 'varchar(3) COLLATE utf8_bin DEFAULT \'\'', // Blood pressure
-				'blood_pressure2' => 'varchar(2) COLLATE utf8_bin DEFAULT \'\'', // Blood pressure
-				'rbs' => 'varchar(255) COLLATE utf8_bin DEFAULT \'\'', // RBS
-				'sao2' => 'varchar(255) COLLATE utf8_bin DEFAULT \'\'', // SaO2
-				'temp' => 'varchar(255) COLLATE utf8_bin DEFAULT \'\'', // Temp
-				'pulse' => 'varchar(255) COLLATE utf8_bin DEFAULT \'\'', // Pulse
-				'eyedraw' => 'text COLLATE utf8_bin DEFAULT \'\'', // Lung eyedraw
-				'lung' => 'text COLLATE utf8_bin DEFAULT \'\'', // Lung
-				'heart' => 'text COLLATE utf8_bin DEFAULT \'\'', // Heart
-				'investigations' => 'text COLLATE utf8_bin DEFAULT \'\'', // Investigations
+				'blood_pressure1' => 'varchar(3) DEFAULT \'\'', // Blood pressure
+				'blood_pressure2' => 'varchar(2) DEFAULT \'\'', // Blood pressure
+				'rbs' => 'varchar(255) DEFAULT \'\'', // RBS
+				'sao2' => 'varchar(255) DEFAULT \'\'', // SaO2
+				'temp' => 'varchar(255) DEFAULT \'\'', // Temp
+				'pulse' => 'varchar(255) DEFAULT \'\'', // Pulse
+				'eyedraw' => 'text DEFAULT \'\'', // Lung eyedraw
+				'lung' => 'text DEFAULT \'\'', // Lung
+				'heart' => 'text DEFAULT \'\'', // Heart
+				'investigations' => 'text DEFAULT \'\'', // Investigations
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
 				'created_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
@@ -88,12 +88,12 @@ class m130402_092533_event_type_OphCiAnaestheticassessment extends CDbMigration
 				'CONSTRAINT `et_ophcianaestheticassessmen_examination_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcianaestheticassessmen_examination_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcianaestheticassessmen_examination_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		// element lookup table ophcianaestheticassessmen_asa_asa_grade
 		$this->createTable('ophcianaestheticassessmen_asa_asa_grade', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -104,7 +104,7 @@ class m130402_092533_event_type_OphCiAnaestheticassessment extends CDbMigration
 				'KEY `ophcianaestheticassessmen_asa_asa_grade_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `ophcianaestheticassessmen_asa_asa_grade_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcianaestheticassessmen_asa_asa_grade_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('ophcianaestheticassessmen_asa_asa_grade',array('name'=>'I','display_order'=>1));
 		$this->insert('ophcianaestheticassessmen_asa_asa_grade',array('name'=>'II','display_order'=>2));
@@ -131,7 +131,7 @@ class m130402_092533_event_type_OphCiAnaestheticassessment extends CDbMigration
 				'CONSTRAINT `et_ophcianaestheticassessmen_asa_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcianaestheticassessmen_asa_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
 				'CONSTRAINT `ophcianaestheticassessmen_asa_asa_grade_fk` FOREIGN KEY (`asa_grade_id`) REFERENCES `ophcianaestheticassessmen_asa_asa_grade` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 	}
 
