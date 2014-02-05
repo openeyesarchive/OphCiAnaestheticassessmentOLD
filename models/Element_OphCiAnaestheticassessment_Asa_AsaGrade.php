@@ -32,7 +32,7 @@
  * @property User $usermodified
  */
 
-class Element_OphCiAnaestheticassessment_Asa_AsaGrade extends BaseActiveRecordVersioned
+class Element_OphCiAnaestheticassessment_Asa_AsaGrade extends BaseActiveRecordVersionedSoftDelete
 {
 	/**
 	 * Returns the static model of the specified AR class.
