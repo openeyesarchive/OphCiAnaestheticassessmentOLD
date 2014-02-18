@@ -25,5 +25,5 @@
 	data-element-display-order="<?php echo $element->elementType->display_order?>">
 	<h4 class="elementTypeName"><?php echo $element->elementType->name; ?></h4>
 
-	<?php echo $form->dropDownList($element, 'asa_grade_id', CHtml::listData(Element_OphCiAnaestheticassessment_Asa_AsaGrade::model()->findAll(array('order'=> 'display_order asc')),'id','name'),array('empty'=>'- Please select -'))?>
+	<?php echo $form->dropDownList($element, 'asa_grade_id', CHtml::listData(Element_OphCiAnaestheticassessment_Asa_AsaGrade::model()->notDeletedOrPk($element->asa_grade_id)->findAll(array('order'=> 'display_order asc')),'id','name'),array('empty'=>'- Please select -'))?>
 </div>
